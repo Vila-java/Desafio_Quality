@@ -1,7 +1,6 @@
 package com.example.desafio_teste.controller;
 
 import com.example.desafio_teste.model.Prop;
-import com.example.desafio_teste.service.PropService;
 import com.example.desafio_teste.service.PropServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

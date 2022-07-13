@@ -1,7 +1,6 @@
 package com.example.desafio_teste.service;
 
 import com.example.desafio_teste.model.Prop;
-import com.example.desafio_teste.model.Room;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;

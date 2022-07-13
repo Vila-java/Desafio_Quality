@@ -3,9 +3,6 @@ package com.example.desafio_teste.service;
 import com.example.desafio_teste.model.District;
 import com.example.desafio_teste.model.Prop;
 import com.example.desafio_teste.model.Room;
-import com.fasterxml.jackson.databind.annotation.JsonAppend;
-import jdk.jfr.Description;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -14,7 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class PropServiceTest {
 
