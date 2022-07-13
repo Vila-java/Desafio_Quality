@@ -19,4 +19,9 @@ public class PropService implements PropServiceInterface {
 
          return totalArea;
     }
+
+    public BigDecimal calculatePricePerDistrict(Prop prop) {
+        BigDecimal total = this.calculateTotalArea(prop).multiply(prop.getDistrict().getValueDistrictM2());
+        return total;
+    }
 }

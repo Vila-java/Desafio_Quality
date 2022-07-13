@@ -31,4 +31,22 @@ class PropServiceTest {
 
         assertThat(result).isEqualTo(expected);
     }
+
+    @Test
+    @DisplayName("verifica se o valor da propriedade está correto")
+    void calculatePricePerDistrict_multiplyTotalAreaPerPrice_whenPropExist() {
+        List<Room> roomList = new ArrayList<>();
+        roomList.add(new Room("Quarto", 1.5, 2.0));
+        roomList.add(new Room("Cozinha", 4.0, 2.0));
+
+        BigDecimal expected = new BigDecimal("61600.00");
+
+        District district = new District("Campeche", new BigDecimal("5600.0"));
+        Prop prop = new Prop("Casa", district, roomList);
+
+        PropService propService = new PropService();
+        BigDecimal result = propService.calculatePricePerDistrict(prop);
+
+        assertThat(result).isEqualTo(expected);
+    }
 }
