@@ -28,14 +28,3 @@ repos:
   #     args:
   #       - -R
   #       - .code_quality/pmd_rules.xml
-
-
-
-
-
-
-
-
-
-
-
