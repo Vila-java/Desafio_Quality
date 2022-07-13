@@ -1,14 +1,11 @@
 package com.example.desafio_teste.service;
 
 import com.example.desafio_teste.model.Room;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.springframework.http.HttpStatus;
 
 import java.math.BigDecimal;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class RoomServiceTest {
 
