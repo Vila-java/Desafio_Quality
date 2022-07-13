@@ -5,5 +5,8 @@ import com.example.desafio_teste.model.Prop;
 import java.math.BigDecimal;
 
 public interface PropServiceInterface {
-    public BigDecimal calculateTotalArea(Prop prop);
+
+    BigDecimal calculateTotalArea(Prop prop);
+
+
 }
