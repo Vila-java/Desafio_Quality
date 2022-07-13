@@ -1,0 +1,15 @@
+package com.example.desafio_teste.model;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Room {
+
+	private String name;
+	private Double width;
+	private Double length;
+}
