@@ -40,7 +40,6 @@ class PropServiceTest {
     public void setup() {
 
     }
-
     public Prop getByNameWhenExist() {
         List<Room> roomList = new ArrayList<>();
         roomList.add(new Room("Quarto", 1.5, 2.0));
@@ -53,9 +52,10 @@ class PropServiceTest {
         return prop;
     }
 
+
     @Test
     @DisplayName("verifica se o total de metros quadrados por propriedade está correto")
-    void calculateTotalArea_sumRoomArea_whenPropExist() {
+    void calculateTotalArea_sumRoomsArea_whenPropExist() {
         BDDMockito.when(propRepo.getByName(ArgumentMatchers.anyString()))
                 .thenReturn(getByNameWhenExist());
 
@@ -69,7 +69,7 @@ class PropServiceTest {
 
     @Test
     @DisplayName("verifica se o total de metros quadrados por propriedade está correto")
-    void calculateTotalArea_NullException_whenPropNotExist() {
+    void calculateTotalArea_returnException_whenPropNotExist() {
         BDDMockito.when(propRepo.getByName(ArgumentMatchers.anyString()))
                 .thenThrow(RuntimeException.class);
 

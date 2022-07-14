@@ -10,19 +10,7 @@ import java.util.Comparator;
 
 @Service
 public class RoomService implements RoomServiceInterface {
-
-
     public BigDecimal calculateArea(@Valid Room room) {
         return BigDecimal.valueOf(room.getLength() * room.getWidth());
     }
-
-
-    public Room getBiggestRoom(Prop prop) {
-        Room bigRoom = prop.getRoomList()
-                .stream()
-                .max(Comparator.comparing(this::calculateArea)).get();
-        return bigRoom;
-
-    }
-
 }

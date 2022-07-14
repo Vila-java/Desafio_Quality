@@ -19,16 +19,18 @@ public class PropController {
     @Autowired
     private PropServiceInterface propService;
 
-    @Autowired
-    private RoomService roomService;
-
-    @GetMapping("/biggestroom")
-    public ResponseEntity<Room> getBiggestRoom (@RequestBody @Validated Prop prop){
-        return ResponseEntity.ok(roomService.getBiggestRoom(prop));
-    }
-
     @GetMapping("/calculateArea/{propName}")
     public ResponseEntity<BigDecimal> calculateTotalArea(@PathVariable String propName) {
         return ResponseEntity.ok(propService.calculateTotalArea(propName));
+    }
+
+    @GetMapping("/calculatePricePerDistrict/{propName}")
+    public ResponseEntity<BigDecimal> calculatePricePerDistrict(@PathVariable String propName) {
+        return ResponseEntity.ok(propService.calculatePricePerDistrict(propName));
+    }
+
+    @GetMapping("/biggestroom/{propName}")
+    public ResponseEntity<Room> getBiggestRoom (@PathVariable String propName){
+        return ResponseEntity.ok(propService.getBiggestRoom(propName));
     }
 }
