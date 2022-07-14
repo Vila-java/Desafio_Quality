@@ -48,7 +48,7 @@ class PropServiceTest {
     }
 
     @Test
-    @DisplayName("verifica se o total de metros quadrados por propriedade está correto")
+    @DisplayName("Verifica se o total de metros quadrados por propriedade está correto")
     void calculateTotalArea_sumRoomsArea_whenPropExist() {
         BDDMockito.when(propRepo.getByName(ArgumentMatchers.anyString()))
                 .thenReturn(TestUtilsGenerator.getByNameWhenExist());
@@ -70,12 +70,11 @@ class PropServiceTest {
         String propName = "Casa";
 
         Exception ex = assertThrows(NotFoundException.class, () -> propService.calculateTotalArea(propName));
-//        assertThat(ex.getMessage()).isEqualTo("Propriedade não encontrada.");
         assertEquals(ex.getMessage(),"Propriedade não encontrada.");
     }
 
     @Test
-    @DisplayName("verifica se o valor da propriedade está correto")
+    @DisplayName("Verifica se o valor da propriedade está correto")
     void calculatePricePerDistrict_multiplyTotalAreaPerPrice_whenPropExist() {
         BDDMockito.when(propRepo.getByName(ArgumentMatchers.anyString()))
                   .thenReturn(TestUtilsGenerator.getByNameWhenExist());
@@ -88,5 +87,19 @@ class PropServiceTest {
         BigDecimal result = propService.calculatePricePerDistrict(propName);
 
         assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    @DisplayName("Retorna uma exceção caso bairro não exista")
+    void calculatePricePerDistrictThrowsNotFoundException_whenDistrictNotExist() {
+        BDDMockito.when(propRepo.getByName(ArgumentMatchers.anyString()))
+                .thenReturn(TestUtilsGenerator.getByNameWhenExist());
+        BDDMockito.when(districtRepo.getByName(ArgumentMatchers.anyString()))
+                .thenThrow(new NotFoundException("Bairro não encontrado."){});
+
+        String propName = "Casa";
+        Exception ex = assertThrows(NotFoundException.class, () -> propService.calculatePricePerDistrict(propName));
+        assertEquals(ex.getMessage(),"Bairro não encontrado.");
+
     }
 }
