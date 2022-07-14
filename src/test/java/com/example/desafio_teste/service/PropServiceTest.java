@@ -5,6 +5,7 @@ import com.example.desafio_teste.model.Prop;
 import com.example.desafio_teste.model.Room;
 import com.example.desafio_teste.repository.PropRepo;
 import com.example.desafio_teste.repository.RoomRepo;
+import com.example.desafio_teste.utils.TestUtilsGenerator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -40,24 +41,12 @@ class PropServiceTest {
     public void setup() {
 
     }
-    public Prop getByNameWhenExist() {
-        List<Room> roomList = new ArrayList<>();
-        roomList.add(new Room("Quarto", 1.5, 2.0));
-        roomList.add(new Room("Cozinha", 4.0, 2.0));
-
-        District district = new District("Campeche", new BigDecimal("5600.00"));
-
-        Prop prop = new Prop("Casa", district, roomList);
-
-        return prop;
-    }
-
 
     @Test
     @DisplayName("verifica se o total de metros quadrados por propriedade está correto")
     void calculateTotalArea_sumRoomsArea_whenPropExist() {
         BDDMockito.when(propRepo.getByName(ArgumentMatchers.anyString()))
-                .thenReturn(getByNameWhenExist());
+                .thenReturn(TestUtilsGenerator.getByNameWhenExist());
 
         BigDecimal expected = new BigDecimal("11.0");
 

@@ -4,6 +4,7 @@ import com.example.desafio_teste.model.District;
 import com.example.desafio_teste.model.Prop;
 import com.example.desafio_teste.model.Room;
 import com.example.desafio_teste.service.RoomService;
+import com.example.desafio_teste.utils.UtilsGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -16,21 +17,8 @@ import java.util.stream.Collectors;
 @Repository
 public class PropRepo {
 
-    public List<Prop> createProps() {
-        List<Room> roomList = RoomRepo.createRooms();
-        District district = new District("Campeche", new BigDecimal("5600.0"));
-
-        List<Prop> propList = new ArrayList<>();
-        propList.add(new Prop("Casa", district, roomList));
-        propList.add(new Prop("Apartamento", district, roomList));
-        propList.add(new Prop("Casa 2", district, roomList));
-        propList.add(new Prop("Casa 3", district, roomList));
-
-        return propList;
-    }
-
     public Prop getByName(String propName) {
-        List<Prop> propList = createProps();
+        List<Prop> propList = UtilsGenerator.createProps();
 
         Prop prop = propList.stream()
                 .filter(p -> p.getName().equals(propName))
