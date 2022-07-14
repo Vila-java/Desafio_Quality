@@ -1,17 +1,13 @@
 package com.example.desafio_teste.service;
 
 import com.example.desafio_teste.exception.NotFoundException;
-import com.example.desafio_teste.model.District;
-import com.example.desafio_teste.model.Prop;
 import com.example.desafio_teste.model.Room;
 import com.example.desafio_teste.repository.PropRepo;
-import com.example.desafio_teste.repository.RoomRepo;
 import com.example.desafio_teste.utils.TestUtilsGenerator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.jupiter.api.parallel.Execution;
 import org.mockito.ArgumentMatchers;
 import org.mockito.BDDMockito;
 import org.mockito.InjectMocks;
@@ -21,8 +17,6 @@ import org.mockito.junit.jupiter.MockitoSettings;
 import org.mockito.quality.Strictness;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -68,6 +62,22 @@ class PropServiceTest {
         Exception ex = assertThrows(NotFoundException.class, () -> propService.calculateTotalArea(propName));
 //        assertThat(ex.getMessage()).isEqualTo("Propriedade não encontrada.");
         assertEquals(ex.getMessage(),"Propriedade não encontrada.");
+    }
+
+    @Test
+    @DisplayName("Retorna o maior comodo da propriedade.")
+    void getBiggestRoom_returnBiggestRoom_whenPropExist() {
+
+        BDDMockito.when(propRepo.getByName(ArgumentMatchers.anyString()))
+                .thenReturn(TestUtilsGenerator.getByNameWhenExist());
+
+        Room expected = new Room("Cozinha", 4.0, 2.0);
+        String propName = "Casa";
+
+        Room result = propService.getBiggestRoom(propName);
+
+        assertThat(result).isEqualTo(expected);
+
     }
 
 //    @Test

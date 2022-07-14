@@ -25,24 +25,5 @@ class RoomServiceTest {
 //        assertThat(result).isEqualTo(expected);
 //
 //    }
-//
-//
-//    @Test
-//    @DisplayName("Retorna o maior comodo da propriedade.")
-//    void returnBiggestRoom() {
-//        List<Room> roomList = new ArrayList<>();
-//        roomList.add(new Room("Quarto", 1.5, 2.0));
-//        roomList.add(new Room("Cozinha", 4.0, 2.0));
-//        roomList.add(new Room("Sacada", 5.0, 5.0));
-//
-//        RoomService roomService = new RoomService();
-//
-//        District district = new District("Bela Vista", new BigDecimal("10600.00"));
-//        Prop prop = new Prop("Apartamento", district, roomList);
-//
-//        Room expected = new Room("Sacada", 5.0, 5.0);
-//        Room result = roomService.getBiggestRoom(prop);
-//
-//    }
 
 }
