@@ -16,7 +16,7 @@ public class TestUtilsGenerator {
 
         District district = new District("Campeche", new BigDecimal("5600.00"));
 
-        Prop prop = new Prop("Casa", district, roomList);
+        Prop prop = new Prop("Casa", district.getName(), roomList);
 
         return prop;
     }

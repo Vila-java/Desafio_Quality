@@ -20,7 +20,7 @@ public class Prop {
 	private String name;
 
 	@NotNull(message = "O campo bairro não pode ser nulo")
-	private District district;
+	private String districtName;
 
 	@NotEmpty(message = "A lista de cômodos não pode estar vazia!")
 	private List<@Valid Room> roomList;
