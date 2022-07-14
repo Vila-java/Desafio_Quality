@@ -20,4 +20,11 @@ public class TestUtilsGenerator {
 
         return prop;
     }
+
+
+    public static Room getRoom(){
+        Room room = new Room("Quarto", 1.60,1.20);
+
+        return room;
+    }
 }
