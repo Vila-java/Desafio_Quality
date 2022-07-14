@@ -1,7 +1,9 @@
 package com.example.desafio_teste.service;
 
+import com.example.desafio_teste.model.District;
 import com.example.desafio_teste.model.Prop;
 import com.example.desafio_teste.model.Room;
+import com.example.desafio_teste.repository.DistrictRepo;
 import com.example.desafio_teste.repository.PropRepo;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,9 @@ public class PropService implements PropServiceInterface {
 
     @Autowired
     PropRepo repoProp;
+
+    @Autowired
+    DistrictRepo repoDistrict;
 
     @Override
     public BigDecimal calculateTotalArea(String propName) {
@@ -37,8 +42,9 @@ public class PropService implements PropServiceInterface {
     @Override
     public BigDecimal calculatePricePerDistrict(String propName) {
         Prop prop = repoProp.getByName(propName);
+        District district = repoDistrict.getByName(prop.getDistrictName());
 
-        BigDecimal total = this.calculateTotalArea(prop.getName()).multiply(prop.getDistrict().getValueDistrictM2());
+        BigDecimal total = this.calculateTotalArea(prop.getName()).multiply(district.getValueDistrictM2());
         return total;
     }
 
