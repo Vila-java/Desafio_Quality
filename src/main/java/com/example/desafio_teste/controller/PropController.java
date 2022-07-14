@@ -7,10 +7,7 @@ import com.example.desafio_teste.service.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.math.BigDecimal;
@@ -22,16 +19,18 @@ public class PropController {
     @Autowired
     private PropServiceInterface propService;
 
-    @Autowired
-    private RoomService roomService;
-
-    @GetMapping("/biggestroom")
-    public ResponseEntity<Room> getBiggestRoom (@RequestBody @Validated Prop prop){
-        return ResponseEntity.ok(roomService.getBiggestRoom(prop));
+    @GetMapping("/calculateArea/{propName}")
+    public ResponseEntity<BigDecimal> calculateTotalArea(@PathVariable String propName) {
+        return ResponseEntity.ok(propService.calculateTotalArea(propName));
     }
 
-    @GetMapping("/calculateArea")
-    public ResponseEntity<BigDecimal> calculateTotalArea(@RequestBody @Valid Prop prop) {
-        return ResponseEntity.ok(propService.calculateTotalArea(prop));
+    @GetMapping("/calculatePricePerDistrict/{propName}")
+    public ResponseEntity<BigDecimal> calculatePricePerDistrict(@PathVariable String propName) {
+        return ResponseEntity.ok(propService.calculatePricePerDistrict(propName));
+    }
+
+    @GetMapping("/biggestroom/{propName}")
+    public ResponseEntity<Room> getBiggestRoom (@PathVariable String propName){
+        return ResponseEntity.ok(propService.getBiggestRoom(propName));
     }
 }
