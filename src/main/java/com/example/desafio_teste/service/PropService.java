@@ -7,8 +7,6 @@ import com.example.desafio_teste.repository.DistrictRepo;
 import com.example.desafio_teste.repository.PropRepo;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
