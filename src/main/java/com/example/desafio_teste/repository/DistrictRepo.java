@@ -1,5 +1,6 @@
 package com.example.desafio_teste.repository;
 
+import com.example.desafio_teste.exception.NotFoundException;
 import com.example.desafio_teste.model.District;
 import com.example.desafio_teste.model.Prop;
 import com.example.desafio_teste.utils.UtilsGenerator;
@@ -18,7 +19,7 @@ public class DistrictRepo {
                 .orElse(null);
 
         if (district == null) {
-            System.out.println("Exceção!");
+            throw new NotFoundException("Bairro não encontrado.");
         }
 
         return district;
