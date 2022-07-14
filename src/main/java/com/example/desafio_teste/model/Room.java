@@ -18,7 +18,7 @@ public class Room {
 	@Size(max = 30, message = "O comprimento do nome do cômodo não pode exceder 30 caracteres")
 	private String name;
 
-	@NotEmpty(message = "A largura do cômodo não pode estar vazia!")
+	@NotNull(message = "A largura do cômodo não pode estar vazia!")
 	@DecimalMax(value = "25", message = "A largura máxima permitida por cômodo é de 25 metros!")
 	private Double width;
 
