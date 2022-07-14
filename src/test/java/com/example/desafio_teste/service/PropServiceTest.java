@@ -1,5 +1,6 @@
 package com.example.desafio_teste.service;
 
+import com.example.desafio_teste.exception.NotFoundException;
 import com.example.desafio_teste.model.District;
 import com.example.desafio_teste.model.Prop;
 import com.example.desafio_teste.model.Room;
@@ -60,11 +61,13 @@ class PropServiceTest {
     @DisplayName("Retorna uma exceção caso a Propriedade não exista")
     void calculateTotalArea_returnException_whenPropNotExist() {
         BDDMockito.when(propRepo.getByName(ArgumentMatchers.anyString()))
-                .thenThrow(RuntimeException.class);
+                .thenThrow(new NotFoundException("Propriedade não encontrada."){});
 
         String propName = "Casa";
 
-        assertThrows(RuntimeException.class, () -> propService.calculateTotalArea(propName));
+        Exception ex = assertThrows(NotFoundException.class, () -> propService.calculateTotalArea(propName));
+//        assertThat(ex.getMessage()).isEqualTo("Propriedade não encontrada.");
+        assertEquals(ex.getMessage(),"Propriedade não encontrada.");
     }
 
 //    @Test

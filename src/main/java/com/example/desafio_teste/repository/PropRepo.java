@@ -1,5 +1,6 @@
 package com.example.desafio_teste.repository;
 
+import com.example.desafio_teste.exception.NotFoundException;
 import com.example.desafio_teste.model.District;
 import com.example.desafio_teste.model.Prop;
 import com.example.desafio_teste.model.Room;
@@ -26,7 +27,7 @@ public class PropRepo {
                 .orElse(null);
 
         if (prop == null) {
-            System.out.println("Exceção!");
+            throw new NotFoundException("Propriedade não encontrada.");
         }
 
         return prop;
