@@ -1,13 +1,8 @@
 package com.example.desafio_teste.service;
 
-import com.example.desafio_teste.model.Prop;
 import com.example.desafio_teste.model.Room;
 import com.example.desafio_teste.utils.TestUtilsGenerator;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.mockito.ArgumentMatchers;
-import org.mockito.BDDMockito;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigDecimal;
 
