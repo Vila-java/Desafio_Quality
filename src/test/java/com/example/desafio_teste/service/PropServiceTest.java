@@ -82,7 +82,8 @@ class PropServiceTest {
         assertThat(result).isEqualTo(expected);
 
     }
-    
+
+    @Test
     @DisplayName("Verifica se o valor da propriedade está correto")
     void calculatePricePerDistrict_multiplyTotalAreaPerPrice_whenPropExist() {
         BDDMockito.when(propRepo.getByName(ArgumentMatchers.anyString()))
