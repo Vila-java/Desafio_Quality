@@ -57,7 +57,7 @@ class PropServiceTest {
     }
 
     @Test
-    @DisplayName("verifica se o total de metros quadrados por propriedade está correto")
+    @DisplayName("Retorna uma exceção caso a Propriedade não exista")
     void calculateTotalArea_returnException_whenPropNotExist() {
         BDDMockito.when(propRepo.getByName(ArgumentMatchers.anyString()))
                 .thenThrow(RuntimeException.class);
