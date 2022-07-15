@@ -88,6 +88,16 @@ class PropControllerTest {
     }
 
     @Test
+    void getBiggestRoom_returnNotFoundException_whenPropNotExist() {
+        String propNameInexistente  = "Casinha";
+        String url = "http://localhost:" + port + "/prop/biggestroom/" + propNameInexistente;
+        ResponseEntity<NotFoundException> response = testRestTemplate.exchange(url, HttpMethod.GET, null, NotFoundException.class);
+
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
+        assertThat(response.getBody().getMessage()).isEqualTo("Propriedade não encontrada.");
+    }
+
+    @Test
     void areaPerRoom() {
     }
 }
