@@ -13,6 +13,9 @@ import javax.validation.Valid;
 import java.math.BigDecimal;
 import java.util.List;
 
+/**
+ * The type Prop controller.
+ */
 @RestController
 @RequestMapping("/prop")
 public class PropController {
@@ -29,21 +32,45 @@ public class PropController {
         return ResponseEntity.ok(district);
     }
 
+    /**
+     * Determina a área total da propriedade
+     *
+     * @param propName nome da propriedade
+     * @return valor da área da propriedade
+     */
     @GetMapping("/calculateArea/{propName}")
     public ResponseEntity<BigDecimal> calculateTotalArea(@PathVariable String propName) {
         return ResponseEntity.ok(propService.calculateTotalArea(propName));
     }
 
+    /**
+     * Determina o preço total da propriedade.
+     *
+     * @param propName nome da propriedade
+     * @return valor total da propriedade de acordo com o bairro
+     */
     @GetMapping("/calculatePropPriceByDistrict/{propName}")
     public ResponseEntity<BigDecimal> calculatePropPriceByDistrict(@PathVariable String propName) {
         return ResponseEntity.ok(propService.calculatePropPriceByDistrict(propName));
     }
 
+    /**
+     * Determina o maior cômodo da propriedade
+     *
+     * @param propName nome da propriedade
+     * @return maior sala da propriedade
+     */
     @GetMapping("/biggestroom/{propName}")
     public ResponseEntity<Room> getBiggestRoom (@PathVariable String propName){
         return ResponseEntity.ok(propService.getBiggestRoom(propName));
     }
 
+    /**
+     * Determina área de cada cômodo da propriedade
+     *
+     * @param propName nome da propriedade
+     * @return listas de cômodos com nome e área total
+     */
     @GetMapping("/areaPerRoom/{propName}")
     public ResponseEntity<List<RoomDetailsDto>> areaPerRoom(@PathVariable String propName){
         return ResponseEntity.ok(propService.areaPerRoom(propName));
