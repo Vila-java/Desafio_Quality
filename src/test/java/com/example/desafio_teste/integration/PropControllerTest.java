@@ -6,6 +6,8 @@ import com.example.desafio_teste.model.Prop;
 import com.example.desafio_teste.service.RoomService;
 import com.example.desafio_teste.utils.TestUtilsGenerator;
 import org.junit.jupiter.api.DisplayName;
+import com.example.desafio_teste.model.Room;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -15,7 +17,6 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -81,7 +82,24 @@ class PropControllerTest {
     }
 
     @Test
-    void getBiggestRoom() {
+    void getBiggestRoom_returnBiggetRoom_whenPropExist() {
+        Prop prop = TestUtilsGenerator.getByNameWhenExist();
+        String url = "http://localhost:" + port + "/prop/biggestroom/" + prop.getName();
+        ResponseEntity<Room> response = testRestTemplate.exchange(url, HttpMethod.GET, null, Room.class);
+
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(response.getBody()).isEqualTo(TestUtilsGenerator.returnBiggestRoom());
+
+    }
+
+    @Test
+    void getBiggestRoom_returnNotFoundException_whenPropNotExist() {
+        String propNameInexistente  = "Casinha";
+        String url = "http://localhost:" + port + "/prop/biggestroom/" + propNameInexistente;
+        ResponseEntity<NotFoundException> response = testRestTemplate.exchange(url, HttpMethod.GET, null, NotFoundException.class);
+
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
+        assertThat(response.getBody().getMessage()).isEqualTo("Propriedade não encontrada.");
     }
 
     @Test
