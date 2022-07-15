@@ -33,6 +33,13 @@ public class TestUtilsGenerator {
 
     }
 
+    public static Room returnBiggestRoom() {
+        Room room = new Room("Cozinha", 4.0, 2.0);
+
+        return room;
+
+    }
+
     public static District getDistrict() {
         District district = new District("Campeche", new BigDecimal("5600.0"));
         return district;

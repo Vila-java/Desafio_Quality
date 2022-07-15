@@ -100,7 +100,7 @@ class PropServiceTest {
 
     @Test
     @DisplayName("Retorna o maior cômodo da propriedade")
-    void getBiggestRoom_returnBiggestRoom_whenPropExist() {
+    void returnBiggestRoom_returnBiggestRoom_whenPropExist() {
         BDDMockito.when(propRepo.getByName(ArgumentMatchers.anyString()))
                 .thenReturn(TestUtilsGenerator.getByNameWhenExist());
 
