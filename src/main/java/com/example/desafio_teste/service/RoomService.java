@@ -6,6 +6,9 @@ import org.springframework.stereotype.Service;
 import javax.validation.Valid;
 import java.math.BigDecimal;
 
+/**
+ * Claase de implemntação da interface RoomService.
+ */
 @Service
 public class RoomService implements RoomServiceInterface {
     public BigDecimal calculateArea(@Valid Room room) {
