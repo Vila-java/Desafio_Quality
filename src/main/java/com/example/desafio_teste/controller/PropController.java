@@ -1,16 +1,19 @@
 package com.example.desafio_teste.controller;
 
+<<<<<<< HEAD
 import com.example.desafio_teste.dto.RoomDetailsDto;
 import com.example.desafio_teste.model.Prop;
+=======
+>>>>>>> 0c6d805fa30798c554e6f3339013b48fcd9e0c7e
 import com.example.desafio_teste.model.Room;
 import com.example.desafio_teste.service.PropServiceInterface;
-import com.example.desafio_teste.service.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.validation.Valid;
 import java.math.BigDecimal;
 import java.util.List;
 
