@@ -23,13 +23,12 @@ public class UtilsGenerator {
 
         List<Prop> propList = new ArrayList<>();
         propList.add(new Prop("Casa", district.getName(), roomList));
-        propList.add(new Prop("Apartamento", district.getName(), roomList));
+        propList.add(new Prop("Apartamento", null, roomList));
         propList.add(new Prop("Casa 2", district.getName(), roomList));
         propList.add(new Prop("Casa 3", district.getName(), roomList));
 
         return propList;
     }
-
 
     public static List<District> createDistricts() {
 
