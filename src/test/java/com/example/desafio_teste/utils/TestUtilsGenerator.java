@@ -21,6 +21,78 @@ public class TestUtilsGenerator {
         return prop;
     }
 
+    public static Prop createPropWithPropNameEmpty() {
+        List<Room> roomList = new ArrayList<>();
+        roomList.add(new Room("Quarto", 1.5, 2.0));
+        roomList.add(new Room("Cozinha", 4.0, 2.0));
+
+        District district = new District("Campeche", new BigDecimal("5600.0"));
+
+        Prop prop = new Prop("", district.getName(), roomList);
+
+        return prop;
+    }
+
+    public static Prop createPropWithPropRoomListEmpty() {
+        List<Room> roomList = new ArrayList<>();
+
+        District district = new District("Campeche", new BigDecimal("5600.0"));
+
+        Prop prop = new Prop("Casa", district.getName(), roomList);
+
+        return prop;
+    }
+
+    public static Prop createPropWithPropDistrictEmpty() {
+        List<Room> roomList = new ArrayList<>();
+        roomList.add(new Room("Quarto", 1.5, 2.0));
+        roomList.add(new Room("Cozinha", 4.0, 2.0));
+
+        District district = new District("", new BigDecimal(""));
+
+        Prop prop = new Prop("Casa", district.getName(), roomList);
+
+        return prop;
+    }
+
+    public static Prop createPropWithPropNameInLowerCase() {
+        List<Room> roomList = new ArrayList<>();
+        roomList.add(new Room("Quarto", 1.5, 2.0));
+        roomList.add(new Room("Cozinha", 4.0, 2.0));
+
+        District district = new District("Campeche", new BigDecimal("5600.0"));
+
+        Prop prop = new Prop("casa", district.getName(), roomList);
+
+        return prop;
+    }
+
+    public static District createDistrict() {
+        District district = new District("Campeche", new BigDecimal("5600.0"));
+        return district;
+    }
+
+    public static District createDistrictWithEmptyDistrictName() {
+        District district = new District("", new BigDecimal("5600.0"));
+        return district;
+    }
+
+    public static District createDistrictWithDistrictNameLongerThan45Caracters() {
+        District district = new District("São José do Vale do Rio Preto Vale do José São Preto Rio", new BigDecimal("5600.0"));
+        return district;
+    }
+
+    public static District createDistrictWithValueM2Empty() {
+        District district = new District("Campeche", null);
+        return district;
+    }
+
+    public static District createDistrictWithValueM2LongerThan13Digits() {
+        District district = new District("Campeche", new BigDecimal("123123123123123123123123123.0"));
+        return district;
+    }
+
+
     public static BigDecimal getTotalAreaProp() {
         return new BigDecimal("11.0");
     }
@@ -42,11 +114,4 @@ public class TestUtilsGenerator {
         return room;
 
     }
-
-    public static District getDistrict() {
-        District district = new District("Campeche", new BigDecimal("5600.0"));
-        return district;
-    }
-
-
 }

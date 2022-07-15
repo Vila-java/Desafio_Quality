@@ -72,7 +72,7 @@ class PropServiceTest {
         BDDMockito.when(propRepo.getByName(ArgumentMatchers.anyString()))
                 .thenReturn(TestUtilsGenerator.getByNameWhenExist());
         BDDMockito.when(districtRepo.getByName(ArgumentMatchers.anyString()))
-                .thenReturn(TestUtilsGenerator.getDistrict());
+                .thenReturn(TestUtilsGenerator.createDistrict());
 
         BigDecimal expected = TestUtilsGenerator.getTotalPriceByDistrict();
 

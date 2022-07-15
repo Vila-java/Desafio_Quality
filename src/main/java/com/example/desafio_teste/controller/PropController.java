@@ -1,15 +1,15 @@
 package com.example.desafio_teste.controller;
 
 import com.example.desafio_teste.dto.RoomDetailsDto;
+import com.example.desafio_teste.model.District;
+import com.example.desafio_teste.model.Prop;
 import com.example.desafio_teste.model.Room;
 import com.example.desafio_teste.service.PropServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -19,6 +19,15 @@ public class PropController {
 
     @Autowired
     private PropServiceInterface propService;
+    @PostMapping("/createProps")
+    public ResponseEntity<Prop> createProps(@RequestBody @Valid Prop prop) {
+        return ResponseEntity.ok(prop);
+    }
+
+    @PostMapping("/createDistrict")
+    public ResponseEntity<District> createDistrict(@RequestBody @Valid District district) {
+        return ResponseEntity.ok(district);
+    }
 
     @GetMapping("/calculateArea/{propName}")
     public ResponseEntity<BigDecimal> calculateTotalArea(@PathVariable String propName) {
