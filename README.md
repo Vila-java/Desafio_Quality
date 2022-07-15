@@ -8,7 +8,7 @@ Este é um projeto proposto pela Digital House no Bootcamp IT Java 6 que enfatiz
 
 A aplicação consiste no desenvolvimento de uma API que seja capaz de calcular a metragem e o custo de diferentes imóveis a depender do seu bairro de localização.
 
-## Funcionalidades da Aplicação
+### Funcionalidades da Aplicação
 
 1. Calcular a área total de uma propriedade.
 
@@ -28,8 +28,7 @@ A aplicação consiste no desenvolvimento de uma API que seja capaz de calcular 
 
 ### Tecnologias desenvolvimento de código
 
-<img src="https://img.icons8.com/color/48/000000/git.png" title= "Git"/>  <img src="https://img.icons8.com/ios-glyphs/48/000000/github.png" title= "Git"/>  <img src="https://img.icons8.com/color/48/000000/java-coffee-cup-logo--v1.png" title= "Java"/>  <img src="https://img.icons8.com/color/48/000000/spring-logo.png" title= "Spring"/>  <img src="https://img.icons8.com/external-tal-revivo-color-tal-revivo/48/000000/external-postman-is-the-only-complete-api-development-environment-logo-color-tal-revivo.png" title= "Postman"/>
-
+<img src="https://img.icons8.com/color/48/000000/git.png" title= "Git"/>  <img src="https://img.icons8.com/ios-glyphs/48/000000/github.png" title= "Git"/>  <img src="https://img.icons8.com/color/48/000000/java-coffee-cup-logo--v1.png" title= "Java"/>  <img src="https://img.icons8.com/color/48/000000/spring-logo.png" title= "Spring"/>  
 
 
 ### Tecnologias comunicação
