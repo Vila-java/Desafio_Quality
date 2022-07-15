@@ -62,14 +62,60 @@ class PropServiceTest {
     @DisplayName("Retorna uma exceção caso a Propriedade não exista")
     void calculateTotalArea_returnException_whenPropNotExist() {
         BDDMockito.when(propRepo.getByName(ArgumentMatchers.anyString()))
-                .thenThrow(new NotFoundException("Propriedade não encontrada."){});
+                .thenThrow(new NotFoundException("Propriedade não encontrada.") {
+                });
 
         String propName = "Casa";
 
         Exception ex = assertThrows(NotFoundException.class, () -> propService.calculateTotalArea(propName));
-        assertEquals(ex.getMessage(),"Propriedade não encontrada.");
+        assertEquals(ex.getMessage(), "Propriedade não encontrada.");
     }
 
+    @Test
+    @DisplayName("Retorna o preço da propriedade correto se o bairro e propriedade existirem")
+    void calculatePropPriceByDistrict_multiplyTotalAreaPerPrice_whenPropAndDistrictExist() {
+        BDDMockito.when(propRepo.getByName(ArgumentMatchers.anyString()))
+                .thenReturn(TestUtilsGenerator.getByNameWhenExist());
+        BDDMockito.when(districtRepo.getByName(ArgumentMatchers.anyString()))
+                .thenReturn(TestUtilsGenerator.getByDistrictNameWhenExist());
+
+        BigDecimal expected = new BigDecimal("61600.00");
+
+        String propName = "Casa";
+        BigDecimal result = propService.calculatePropPriceByDistrict(propName);
+
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @Test
+    @DisplayName("Retorna uma exceção caso bairro não exista")
+    void calculatePropPriceByDistrictThrowsNotFoundException_whenDistrictNotExist() {
+        BDDMockito.when(propRepo.getByName(ArgumentMatchers.anyString()))
+                .thenReturn(TestUtilsGenerator.getByNameWhenExist());
+        BDDMockito.when(districtRepo.getByName(ArgumentMatchers.anyString()))
+                .thenThrow(new NotFoundException("Bairro não encontrado.") {
+                });
+
+        String propName = "Casa";
+        Exception ex = assertThrows(NotFoundException.class, () -> propService.calculatePropPriceByDistrict(propName));
+        assertEquals(ex.getMessage(), "Bairro não encontrado.");
+
+    }
+
+    @Test
+    @DisplayName("Retorna o maior cômodo da propriedade")
+    void getBiggestRoom_returnBiggestRoom_whenPropExist() {
+        BDDMockito.when(propRepo.getByName(ArgumentMatchers.anyString()))
+                .thenReturn(TestUtilsGenerator.getByNameWhenExist());
+
+        Room expected = new Room("Cozinha", 4.0, 2.0);
+        String propName = "Casa";
+
+        Room result = propService.getBiggestRoom(propName);
+
+        assertThat(result).isEqualTo(expected);
+
+    }
 
     @Test
     @DisplayName("Verifica se o total de metros quadrados por comodo está correto")
@@ -88,49 +134,4 @@ class PropServiceTest {
 
     }
 
-    @Test
-    @DisplayName("Retorna o maior comodo da propriedade.")
-    void getBiggestRoom_returnBiggestRoom_whenPropExist() {
-
-        BDDMockito.when(propRepo.getByName(ArgumentMatchers.anyString()))
-                .thenReturn(TestUtilsGenerator.getByNameWhenExist());
-
-        Room expected = new Room("Cozinha", 4.0, 2.0);
-        String propName = "Casa";
-
-        Room result = propService.getBiggestRoom(propName);
-
-        assertThat(result).isEqualTo(expected);
-
-    }
-
-    @Test
-    @DisplayName("Verifica se o valor da propriedade está correto")
-    void calculatePricePerDistrict_multiplyTotalAreaPerPrice_whenPropExist() {
-        BDDMockito.when(propRepo.getByName(ArgumentMatchers.anyString()))
-                  .thenReturn(TestUtilsGenerator.getByNameWhenExist());
-        BDDMockito.when(districtRepo.getByName(ArgumentMatchers.anyString()))
-                  .thenReturn(TestUtilsGenerator.getByDistrictNameWhenExist());
-
-        BigDecimal expected = new BigDecimal("61600.00");
-
-        String propName = "Casa";
-        BigDecimal result = propService.calculatePricePerDistrict(propName);
-
-        assertThat(result).isEqualTo(expected);
-    }
-
-    @Test
-    @DisplayName("Retorna uma exceção caso bairro não exista")
-    void calculatePricePerDistrictThrowsNotFoundException_whenDistrictNotExist() {
-        BDDMockito.when(propRepo.getByName(ArgumentMatchers.anyString()))
-                .thenReturn(TestUtilsGenerator.getByNameWhenExist());
-        BDDMockito.when(districtRepo.getByName(ArgumentMatchers.anyString()))
-                .thenThrow(new NotFoundException("Bairro não encontrado."){});
-
-        String propName = "Casa";
-        Exception ex = assertThrows(NotFoundException.class, () -> propService.calculatePricePerDistrict(propName));
-        assertEquals(ex.getMessage(),"Bairro não encontrado.");
-
-    }
 }

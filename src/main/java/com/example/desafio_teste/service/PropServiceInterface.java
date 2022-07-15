@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface PropServiceInterface {
     BigDecimal calculateTotalArea(String propName);
-    BigDecimal calculatePricePerDistrict(String propName);
+    BigDecimal calculatePropPriceByDistrict(String propName);
     Room getBiggestRoom(String propName);
     List<RoomDetailsDto> areaPerRoom(String propName);
 }

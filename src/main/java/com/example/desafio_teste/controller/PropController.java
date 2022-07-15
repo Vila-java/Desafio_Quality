@@ -25,9 +25,9 @@ public class PropController {
         return ResponseEntity.ok(propService.calculateTotalArea(propName));
     }
 
-    @GetMapping("/calculatePricePerDistrict/{propName}")
-    public ResponseEntity<BigDecimal> calculatePricePerDistrict(@PathVariable String propName) {
-        return ResponseEntity.ok(propService.calculatePricePerDistrict(propName));
+    @GetMapping("/calculatePropPriceByDistrict/{propName}")
+    public ResponseEntity<BigDecimal> calculatePropPriceByDistrict(@PathVariable String propName) {
+        return ResponseEntity.ok(propService.calculatePropPriceByDistrict(propName));
     }
 
     @GetMapping("/biggestroom/{propName}")
