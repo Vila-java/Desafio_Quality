@@ -25,6 +25,9 @@ public class TestUtilsGenerator {
         return new BigDecimal("11.0");
     }
 
+    public static BigDecimal getTotalPriceByDistrict () {
+        return new BigDecimal("61600.00");
+    }
 
     public static Room getRoom() {
         Room room = new Room("Quarto", 1.60, 1.20);
