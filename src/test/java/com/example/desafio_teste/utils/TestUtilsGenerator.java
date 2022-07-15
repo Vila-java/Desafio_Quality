@@ -21,15 +21,22 @@ public class TestUtilsGenerator {
         return prop;
     }
 
-    public static Room getRoom(){
-        Room room = new Room("Quarto", 1.60,1.20);
-
-        return room;
-        
+    public static BigDecimal getTotalAreaProp() {
+        return new BigDecimal("11.0");
     }
 
-    public static District getByDistrictNameWhenExist() {
+
+    public static Room getRoom() {
+        Room room = new Room("Quarto", 1.60, 1.20);
+
+        return room;
+
+    }
+
+    public static District getDistrict() {
         District district = new District("Campeche", new BigDecimal("5600.0"));
         return district;
     }
+
+
 }
