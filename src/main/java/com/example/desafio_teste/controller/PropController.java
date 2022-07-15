@@ -1,10 +1,6 @@
 package com.example.desafio_teste.controller;
 
-<<<<<<< HEAD
 import com.example.desafio_teste.dto.RoomDetailsDto;
-import com.example.desafio_teste.model.Prop;
-=======
->>>>>>> 0c6d805fa30798c554e6f3339013b48fcd9e0c7e
 import com.example.desafio_teste.model.Room;
 import com.example.desafio_teste.service.PropServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
