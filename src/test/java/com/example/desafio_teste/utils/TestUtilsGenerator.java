@@ -56,18 +56,6 @@ public class TestUtilsGenerator {
         return prop;
     }
 
-    public static Prop createPropWithPropDistrictEmpty() {
-        List<Room> roomList = new ArrayList<>();
-        roomList.add(new Room("Quarto", 1.5, 2.0));
-        roomList.add(new Room("Cozinha", 4.0, 2.0));
-
-        District district = new District("", new BigDecimal(""));
-
-        Prop prop = new Prop("Casa", district.getName(), roomList);
-
-        return prop;
-    }
-
     public static Prop createPropWithPropNameInLowerCase() {
         List<Room> roomList = new ArrayList<>();
         roomList.add(new Room("Quarto", 1.5, 2.0));
@@ -80,6 +68,11 @@ public class TestUtilsGenerator {
         return prop;
     }
 
+    /**
+     * Chama um bairro
+     *
+     * @return um bairro
+     */
     public static District createDistrict() {
         District district = new District("Campeche", new BigDecimal("5600.0"));
         return district;
@@ -129,16 +122,6 @@ public class TestUtilsGenerator {
 
         return room;
 
-    }
-
-    /**
-     * Chama um bairro
-     *
-     * @return um bairro
-     */
-    public static District getDistrict() {
-        District district = new District("Campeche", new BigDecimal("5600.0"));
-        return district;
     }
 
     public static Room returnBiggestRoom() {
