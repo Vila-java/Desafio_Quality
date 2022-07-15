@@ -39,10 +39,6 @@ class PropServiceTest {
     @Mock
     DistrictRepo districtRepo;
 
-    @BeforeEach
-    public void setup() {
-
-    }
 
     @Test
     @DisplayName("Verifica se o total de metros quadrados por propriedade está correto")
@@ -50,7 +46,7 @@ class PropServiceTest {
         BDDMockito.when(propRepo.getByName(ArgumentMatchers.anyString()))
                 .thenReturn(TestUtilsGenerator.getByNameWhenExist());
 
-        BigDecimal expected = new BigDecimal("11.0");
+        BigDecimal expected = TestUtilsGenerator.getTotalAreaProp();
 
         String propName = "Casa";
         BigDecimal result = propService.calculateTotalArea(propName);
@@ -77,7 +73,7 @@ class PropServiceTest {
         BDDMockito.when(propRepo.getByName(ArgumentMatchers.anyString()))
                 .thenReturn(TestUtilsGenerator.getByNameWhenExist());
         BDDMockito.when(districtRepo.getByName(ArgumentMatchers.anyString()))
-                .thenReturn(TestUtilsGenerator.getByDistrictNameWhenExist());
+                .thenReturn(TestUtilsGenerator.getDistrict());
 
         BigDecimal expected = new BigDecimal("61600.00");
 
