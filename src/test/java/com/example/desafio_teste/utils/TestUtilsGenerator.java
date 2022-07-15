@@ -14,7 +14,7 @@ public class TestUtilsGenerator {
         roomList.add(new Room("Quarto", 1.5, 2.0));
         roomList.add(new Room("Cozinha", 4.0, 2.0));
 
-        District district = new District("Campeche", new BigDecimal("5600.00"));
+        District district = new District("Campeche", new BigDecimal("5600.0"));
 
         Prop prop = new Prop("Casa", district.getName(), roomList);
 
@@ -29,7 +29,7 @@ public class TestUtilsGenerator {
     }
 
     public static District getByDistrictNameWhenExist() {
-        District district = new District("Lagoa da Conceição", new BigDecimal("6.600"));
+        District district = new District("Campeche", new BigDecimal("5600.0"));
         return district;
     }
 }
