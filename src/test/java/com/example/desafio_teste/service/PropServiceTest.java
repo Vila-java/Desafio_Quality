@@ -52,7 +52,7 @@ class PropServiceTest {
 
 
     /**
-     * Calcula a soma da area total da propriedade.
+     * Verifica se o total de metros quadrados por propriedade está correto
      */
     @Test
     @DisplayName("Verifica se o total de metros quadrados por propriedade está correto")
@@ -69,7 +69,7 @@ class PropServiceTest {
     }
 
     /**
-     * Calculate total area return exception when prop not exist.
+     * Retorna uma exceção caso a Propriedade não exista
      */
     @Test
     @DisplayName("Retorna uma exceção caso a Propriedade não exista")
@@ -85,7 +85,7 @@ class PropServiceTest {
     }
 
     /**
-     * Calculate prop price by district multiply total area per price when prop and district exist.
+     * Retorna o preço da propriedade correto se o bairro e propriedade existirem
      */
     @Test
     @DisplayName("Retorna o preço da propriedade correto se o bairro e propriedade existirem")
@@ -104,7 +104,7 @@ class PropServiceTest {
     }
 
     /**
-     * Calculate prop price by district throws not found exception when district not exist.
+     * Retorna uma exceção caso bairro não exista
      */
     @Test
     @DisplayName("Retorna uma exceção caso bairro não exista")
@@ -122,7 +122,7 @@ class PropServiceTest {
     }
 
     /**
-     * Gets biggest room return biggest room when prop exist.
+     * Retorna o maior cômodo da propriedade
      */
     @Test
     @DisplayName("Retorna o maior cômodo da propriedade")
@@ -140,7 +140,7 @@ class PropServiceTest {
     }
 
     /**
-     * Calculate total room area sum rooms area when room exist.
+     * Verifica se o total de metros quadrados por comodo está correto
      */
     @Test
     @DisplayName("Verifica se o total de metros quadrados por comodo está correto")

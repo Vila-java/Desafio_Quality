@@ -9,9 +9,15 @@ import java.math.BigDecimal;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
+/**
+ * Classe de testes unitários da camada Service
+ */
 class RoomServiceTest {
 
 
+    /**
+     * Calcula a area total do cômodo quado cômodo existir.
+     */
     @Test
     void calculateArea_calculatedRoomArea_whenRoomExist() {
         Room room = TestUtilsGenerator.getRoom();
