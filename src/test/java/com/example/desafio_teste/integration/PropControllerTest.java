@@ -2,18 +2,19 @@ package com.example.desafio_teste.integration;
 
 import com.example.desafio_teste.dto.RoomDetailsDto;
 import com.example.desafio_teste.exception.NotFoundException;
+import com.example.desafio_teste.model.District;
 import com.example.desafio_teste.model.Prop;
 import com.example.desafio_teste.service.RoomService;
 import com.example.desafio_teste.utils.TestUtilsGenerator;
 import org.junit.jupiter.api.DisplayName;
 import com.example.desafio_teste.model.Room;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,6 +32,119 @@ class PropControllerTest {
 
     @Autowired
     TestRestTemplate testRestTemplate;
+
+    @Test
+    void createProps() {
+        Prop prop = TestUtilsGenerator.getByNameWhenExist();
+        String url = "http://localhost:" + port + "/prop/createProps";
+        HttpEntity<Prop> httpEntity = new HttpEntity<>(prop);
+        ResponseEntity<Prop> response = testRestTemplate.exchange(url, HttpMethod.POST, httpEntity, Prop.class);
+
+        Prop propResponse = response.getBody();
+
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(propResponse).isNotNull();
+    }
+
+    @Test
+    void createPropsWithPropNameEmpty_ShouldReturnAnBadRequest() {
+        Prop prop = TestUtilsGenerator.createPropWithPropNameEmpty();
+        String url = "http://localhost:" + port + "/prop/createProps";
+        HttpEntity<Prop> httpEntity = new HttpEntity<>(prop);
+        ResponseEntity<Prop> response = testRestTemplate.exchange(url, HttpMethod.POST, httpEntity, Prop.class);
+
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
+
+    }
+
+    @Test
+    void createPropsWithRoomListEmpty_ShouldReturnAnBadRequest() {
+        Prop prop = TestUtilsGenerator.createPropWithPropRoomListEmpty();
+        String url = "http://localhost:" + port + "/prop/createProps";
+        HttpEntity<Prop> httpEntity = new HttpEntity<>(prop);
+        ResponseEntity<Prop> response = testRestTemplate.exchange(url, HttpMethod.POST, httpEntity, Prop.class);
+
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
+
+    }
+
+    @Test
+    void createPropsWithDistrictEmpty_ShouldReturnAnBadRequest() {
+        Prop prop = TestUtilsGenerator.createPropWithPropRoomListEmpty();
+        String url = "http://localhost:" + port + "/prop/createProps";
+        HttpEntity<Prop> httpEntity = new HttpEntity<>(prop);
+        ResponseEntity<Prop> response = testRestTemplate.exchange(url, HttpMethod.POST, httpEntity, Prop.class);
+
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
+
+    }
+
+    @Test
+    void createPropsWithPropNameInLowerCase_ShouldReturnAnBadRequest() {
+        Prop prop = TestUtilsGenerator.createPropWithPropNameInLowerCase();
+        String url = "http://localhost:" + port + "/prop/createProps";
+        HttpEntity<Prop> httpEntity = new HttpEntity<>(prop);
+        ResponseEntity<Prop> response = testRestTemplate.exchange(url, HttpMethod.POST, httpEntity, Prop.class);
+
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
+
+    }
+
+    @Test
+    void createDistrict() {
+        District district = TestUtilsGenerator.createDistrict();
+        String url = "http://localhost:" + port + "/prop/createDistrict";
+        HttpEntity<District> httpEntity = new HttpEntity<>(district);
+        ResponseEntity<District> response = testRestTemplate.exchange(url, HttpMethod.POST, httpEntity, District.class);
+
+        District districtResponse = response.getBody();
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(districtResponse).isNotNull();
+    }
+
+    @Test
+    void createDistrictWithDistrictNameEmpty_ShouldReturnAnBadRequest() {
+        District district = TestUtilsGenerator.createDistrictWithEmptyDistrictName();
+        String url = "http://localhost:" + port + "/prop/createDistrict";
+        HttpEntity<District> httpEntity = new HttpEntity<>(district);
+        ResponseEntity<District> response = testRestTemplate.exchange(url, HttpMethod.POST, httpEntity, District.class);
+
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
+
+    }
+
+    @Test
+    void createDistrictWithDistrictNameLongerThan45Caracters_ShouldReturnAnBadRequest() {
+        District district = TestUtilsGenerator.createDistrictWithDistrictNameLongerThan45Caracters();
+        String url = "http://localhost:" + port + "/prop/createDistrict";
+        HttpEntity<District> httpEntity = new HttpEntity<>(district);
+        ResponseEntity<District> response = testRestTemplate.exchange(url, HttpMethod.POST, httpEntity, District.class);
+
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
+
+    }
+
+    @Test
+    void createDistrictWithDistrictValueEmpty_ShouldReturnAnBadRequest() {
+        District district = TestUtilsGenerator.createDistrictWithValueM2Empty();
+        String url = "http://localhost:" + port + "/prop/createDistrict";
+        HttpEntity<District> httpEntity = new HttpEntity<>(district);
+        ResponseEntity<District> response = testRestTemplate.exchange(url, HttpMethod.POST, httpEntity, District.class);
+
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
+
+    }
+
+    @Test
+    void createDistrictWithDistrictValueM2LongerThan13Digits_ShouldReturnAnBadRequest() {
+        District district = TestUtilsGenerator.createDistrictWithValueM2LongerThan13Digits();
+        String url = "http://localhost:" + port + "/prop/createDistrict";
+        HttpEntity<District> httpEntity = new HttpEntity<>(district);
+        ResponseEntity<District> response = testRestTemplate.exchange(url, HttpMethod.POST, httpEntity, District.class);
+
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
+
+    }
 
     @Test
     @DisplayName("Verifica se o total de metros quadrados por propriedade está correto")
