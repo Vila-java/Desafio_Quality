@@ -1,6 +1,7 @@
 package com.example.desafio_teste.integration;
 
 import com.example.desafio_teste.dto.RoomDetailsDto;
+import com.example.desafio_teste.exception.NotFoundException;
 import com.example.desafio_teste.model.Prop;
 import com.example.desafio_teste.service.RoomService;
 import com.example.desafio_teste.utils.TestUtilsGenerator;
@@ -68,5 +69,16 @@ class PropControllerTest {
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(response.getBody()).isEqualTo(expectedResponse);
+    }
+
+    @Test
+    void areaPerRoom_returnException_whenPropNotExist() {
+        String url = "http://localhost:" + port + "/prop/areaPerRoom/nomeErrado";
+
+        ResponseEntity<NotFoundException> response = testRestTemplate.exchange(url,
+                HttpMethod.GET, null, NotFoundException.class);
+
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
+        assertThat(response.getBody().getMessage()).isEqualTo("Propriedade não encontrada.");
     }
 }
