@@ -4,6 +4,7 @@ import com.example.desafio_teste.exception.NotFoundException;
 import com.example.desafio_teste.model.Prop;
 import com.example.desafio_teste.model.Room;
 import com.example.desafio_teste.utils.TestUtilsGenerator;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
