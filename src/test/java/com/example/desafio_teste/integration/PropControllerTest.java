@@ -24,15 +24,24 @@ import java.util.stream.Collectors;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
+/**
+ * Classe que faz o teste integrado com a camada Controller.
+ */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class PropControllerTest {
 
     @LocalServerPort
     private int port;
 
+    /**
+     * Injeçao de dependencia da classe TestRestTemplate.
+     */
     @Autowired
     TestRestTemplate testRestTemplate;
 
+    /**
+     * Calculate area total quando existe propriedade.
+     */
     @Test
     void createProps() {
         Prop prop = TestUtilsGenerator.getByNameWhenExist();
@@ -146,6 +155,9 @@ class PropControllerTest {
 
     }
 
+    /**
+     * Calculate area total quando existe propriedade.
+     */
     @Test
     @DisplayName("Verifica se o total de metros quadrados por propriedade está correto")
     void calculateTotalArea_returnTotalArea_whenPropExist() {
@@ -157,6 +169,9 @@ class PropControllerTest {
         assertThat(response.getBody()).isEqualTo(TestUtilsGenerator.getTotalAreaProp());
     }
 
+    /**
+     * Calcula preço da propriedade por bairro.
+     */
     @Test
     void calculatePropPriceByDistrict() {
         Prop prop = TestUtilsGenerator.getByNameWhenExist();
@@ -167,6 +182,9 @@ class PropControllerTest {
         assertThat(response.getBody()).isEqualTo(TestUtilsGenerator.getTotalPriceByDistrict());
     }
 
+    /**
+     * Retorna um erro quando calcula preço da propriedade por bairro e nao possui nome da propriedade.
+     */
     @Test
     void calculatePropPriceByDistrict_WhenPropNameIsEmpty_ReturnNotFoundException() {
         String url = "http://localhost:" + port + "/prop/calculatePropPriceByDistrict/";
@@ -175,6 +193,9 @@ class PropControllerTest {
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
     }
 
+    /**
+     * Retorna um erro quando calcula preço da propriedade por bairro e nome da propriedade está incorreto.
+     */
     @Test
     void calculatePropPriceByDistrict_WhenPropNameIsIncorrect_ReturnNotFoundException() {
         String nomeInexistente = "Casinha";
@@ -185,6 +206,9 @@ class PropControllerTest {
         assertThat(response.getBody().getMessage()).isEqualTo("Propriedade não encontrada.");
     }
 
+    /**
+     * Retorna um erro quando calcula preço da propriedade por bairro e nome da propriedade está vazio.
+     */
     @Test
     void calculatePropPriceByDistrict_WhenDistrictIsEmpty_ReturnNotFoundException() {
         String propName = "Apartamento";
@@ -195,6 +219,9 @@ class PropControllerTest {
         assertThat(response.getBody().getMessage()).isEqualTo("Bairro não encontrado.");
     }
 
+    /**
+     * Retorna o maior cômodo.
+     */
     @Test
     void getBiggestRoom_returnBiggetRoom_whenPropExist() {
         Prop prop = TestUtilsGenerator.getByNameWhenExist();
@@ -206,6 +233,9 @@ class PropControllerTest {
 
     }
 
+    /**
+     * Calcula a area por cômodo.
+     */
     @Test
     void getBiggestRoom_returnNotFoundException_whenPropNotExist() {
         String propNameInexistente  = "Casinha";
@@ -216,6 +246,9 @@ class PropControllerTest {
         assertThat(response.getBody().getMessage()).isEqualTo("Propriedade não encontrada.");
     }
 
+    /**
+     * Calcula a area por cômodo.
+     */
     @Test
     @DisplayName("Verifica se o total de metros quadrados por comodo está correto")
     void areaPerRoom_returnListRoomNameAndPrice_whenPropExist() {
