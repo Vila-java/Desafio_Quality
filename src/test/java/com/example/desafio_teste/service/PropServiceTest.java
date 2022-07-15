@@ -25,20 +25,35 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+/**
+ * Classe de testes unitários da camada Service
+ */
 @ExtendWith(MockitoExtension.class)
 @MockitoSettings(strictness = Strictness.LENIENT)
 class PropServiceTest {
 
+    /**
+     * Injeçao de mock da classe PropService
+     */
     @InjectMocks
     PropService propService;
 
+    /**
+     * Mocks da classe PropRepo
+     */
     @Mock
     PropRepo propRepo;
 
+    /**
+     * Mock da classe DistrictRepo
+     */
     @Mock
     DistrictRepo districtRepo;
 
 
+    /**
+     * Calcula a soma da area total da propriedade.
+     */
     @Test
     @DisplayName("Verifica se o total de metros quadrados por propriedade está correto")
     void calculateTotalArea_sumRoomsArea_whenPropExist() {
@@ -53,6 +68,9 @@ class PropServiceTest {
         assertThat(result).isEqualTo(expected);
     }
 
+    /**
+     * Calculate total area return exception when prop not exist.
+     */
     @Test
     @DisplayName("Retorna uma exceção caso a Propriedade não exista")
     void calculateTotalArea_returnException_whenPropNotExist() {
@@ -66,6 +84,9 @@ class PropServiceTest {
         assertEquals(ex.getMessage(), "Propriedade não encontrada.");
     }
 
+    /**
+     * Calculate prop price by district multiply total area per price when prop and district exist.
+     */
     @Test
     @DisplayName("Retorna o preço da propriedade correto se o bairro e propriedade existirem")
     void calculatePropPriceByDistrict_multiplyTotalAreaPerPrice_whenPropAndDistrictExist() {
@@ -82,6 +103,9 @@ class PropServiceTest {
         assertThat(result).isEqualTo(expected);
     }
 
+    /**
+     * Calculate prop price by district throws not found exception when district not exist.
+     */
     @Test
     @DisplayName("Retorna uma exceção caso bairro não exista")
     void calculatePropPriceByDistrictThrowsNotFoundException_whenDistrictNotExist() {
@@ -97,6 +121,9 @@ class PropServiceTest {
 
     }
 
+    /**
+     * Gets biggest room return biggest room when prop exist.
+     */
     @Test
     @DisplayName("Retorna o maior cômodo da propriedade")
     void getBiggestRoom_returnBiggestRoom_whenPropExist() {
@@ -112,6 +139,9 @@ class PropServiceTest {
 
     }
 
+    /**
+     * Calculate total room area sum rooms area when room exist.
+     */
     @Test
     @DisplayName("Verifica se o total de metros quadrados por comodo está correto")
     void calculateTotalRoomArea_sumRoomsArea_whenRoomExist() {

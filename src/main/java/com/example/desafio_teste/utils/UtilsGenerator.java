@@ -8,8 +8,16 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Classe de métodos comuns.
+ */
 public class UtilsGenerator {
 
+    /**
+     * Cria uma lista de cômodos.
+     *
+     * @return lista de cômodos
+     */
     public static List<Room> createRooms() {
         List<Room> roomList = new ArrayList<>();
         roomList.add(new Room("Quarto", 1.5, 2.0));
@@ -17,6 +25,11 @@ public class UtilsGenerator {
         return roomList;
     }
 
+    /**
+     * Cria uma lista de propriedades.
+     *
+     * @return lista de propriedades
+     */
     public static List<Prop> createProps() {
         List<Room> roomList = createRooms();
         District district = new District("Campeche", new BigDecimal("5600.0"));
@@ -30,6 +43,11 @@ public class UtilsGenerator {
         return propList;
     }
 
+    /**
+     * Cria lista de bairros.
+     *
+     * @return lista de bairros
+     */
     public static List<District> createDistricts() {
 
         List<District> districtList = new ArrayList<>();
