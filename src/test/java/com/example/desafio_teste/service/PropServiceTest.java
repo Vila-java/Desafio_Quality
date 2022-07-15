@@ -1,5 +1,6 @@
 package com.example.desafio_teste.service;
 
+import com.example.desafio_teste.dto.RoomDetailsDto;
 import com.example.desafio_teste.exception.NotFoundException;
 import com.example.desafio_teste.model.District;
 import com.example.desafio_teste.model.Prop;
@@ -87,4 +88,20 @@ class PropServiceTest {
 //
 //        assertThat(result).isEqualTo(expected);
 //    }
+
+    @Test
+    @DisplayName("verifica se o total de metros quadrados por comodo está correto")
+    void calculateTotalRoomArea_sumRoomsArea_whenRoomExist() {
+        BDDMockito.when(propRepo.getByName(ArgumentMatchers.anyString()))
+                .thenReturn(TestUtilsGenerator.getByNameWhenExist());
+
+        List<RoomDetailsDto> roomDetailsDtoListExpected = new ArrayList<>();
+        roomDetailsDtoListExpected.add( new RoomDetailsDto("Quarto", new BigDecimal("3.0")));
+        roomDetailsDtoListExpected.add( new RoomDetailsDto("Cozinha", new BigDecimal("8.0")));
+
+        String propName = "Quarto";
+        List result = propService.areaPerRoom(propName);
+
+        assertThat(result).isEqualTo(roomDetailsDtoListExpected);
+    }
 }
