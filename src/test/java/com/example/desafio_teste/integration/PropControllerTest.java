@@ -2,7 +2,6 @@ package com.example.desafio_teste.integration;
 
 import com.example.desafio_teste.model.Prop;
 import com.example.desafio_teste.utils.TestUtilsGenerator;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -38,6 +37,12 @@ class PropControllerTest {
 
     @Test
     void calculatePropPriceByDistrict() {
+        Prop prop = TestUtilsGenerator.getByNameWhenExist();
+        String url = "http://localhost:" + port + "/prop/calculatePropPriceByDistrict/" + prop.getName();
+        ResponseEntity<BigDecimal> response = testRestTemplate.exchange(url, HttpMethod.GET, null, BigDecimal.class);
+
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(response.getBody()).isEqualTo(TestUtilsGenerator.getTotalPriceByDistrict());
     }
 
     @Test

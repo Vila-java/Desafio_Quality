@@ -6,7 +6,6 @@ import com.example.desafio_teste.model.Room;
 import com.example.desafio_teste.repository.DistrictRepo;
 import com.example.desafio_teste.repository.PropRepo;
 import com.example.desafio_teste.utils.TestUtilsGenerator;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -75,7 +74,7 @@ class PropServiceTest {
         BDDMockito.when(districtRepo.getByName(ArgumentMatchers.anyString()))
                 .thenReturn(TestUtilsGenerator.getDistrict());
 
-        BigDecimal expected = new BigDecimal("61600.00");
+        BigDecimal expected = TestUtilsGenerator.getTotalPriceByDistrict();
 
         String propName = "Casa";
         BigDecimal result = propService.calculatePropPriceByDistrict(propName);
