@@ -8,9 +8,7 @@ import java.math.BigDecimal;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-
 class RoomServiceTest {
-
 
     @Test
     void calculateArea_calculatedRoomArea_whenRoomExist() {
