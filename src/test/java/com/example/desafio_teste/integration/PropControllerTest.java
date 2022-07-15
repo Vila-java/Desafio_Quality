@@ -155,6 +155,9 @@ class PropControllerTest {
 
     }
 
+    /**
+     * Calculate area total quando existe propriedade.
+     */
     @Test
     @DisplayName("Verifica se o total de metros quadrados por propriedade está correto")
     void calculateTotalArea_returnTotalArea_whenPropExist() {
