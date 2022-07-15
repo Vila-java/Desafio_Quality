@@ -41,7 +41,7 @@ public class PropService implements PropServiceInterface {
     }
 
     @Override
-    public BigDecimal calculatePricePerDistrict(String propName) {
+    public BigDecimal calculatePropPriceByDistrict(String propName) {
         Prop prop = repoProp.getByName(propName);
         District district = repoDistrict.getByName(prop.getDistrictName());
 
