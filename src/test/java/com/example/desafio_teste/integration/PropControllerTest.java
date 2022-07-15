@@ -243,6 +243,9 @@ class PropControllerTest {
         assertThat(response.getBody().getMessage()).isEqualTo("Propriedade não encontrada.");
     }
 
+    /**
+     * Calcula a area por cômodo.
+     */
     @Test
     @DisplayName("Verifica se o total de metros quadrados por comodo está correto")
     void areaPerRoom_returnListRoomNameAndPrice_whenPropExist() {
