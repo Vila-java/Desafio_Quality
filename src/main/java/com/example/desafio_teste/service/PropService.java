@@ -15,13 +15,22 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Claase de implemntação da interface PropService.
+ */
 @Service
 @Data
 public class PropService implements PropServiceInterface {
 
+    /**
+     * Injeçao de dependência da classe PropRepo.
+     */
     @Autowired
     PropRepo repoProp;
 
+    /**
+     * Injeçao de dependência  da classe DistrictRepo.
+     */
     @Autowired
     DistrictRepo repoDistrict;
 
