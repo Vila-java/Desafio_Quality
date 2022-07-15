@@ -37,16 +37,6 @@ class PropControllerTest {
     }
 
     @Test
-    void calculateTotalArea_returnNotFound_whenPropNotExist() {
-        String nomePropInexistente = "nome inexistente";
-        String url = "http://localhost:" + port + "/prop/calculateArea/" + nomePropInexistente;
-        testRestTemplate.exchange(url, HttpMethod.GET, null, BigDecimal.class);
-
-     //   assertThat(response.getStatusCode()).isEqualTo(HttpStatus.N);
-
-    }
-
-    @Test
     void calculatePropPriceByDistrict() {
     }
 
