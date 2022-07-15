@@ -38,6 +38,12 @@ class PropControllerTest {
 
     @Test
     void calculatePropPriceByDistrict() {
+        Prop prop = TestUtilsGenerator.getByNameWhenExist();
+        String url = "http://localhost:" + port + "/prop/calculatePropPriceByDistrict/" + prop.getName();
+        ResponseEntity<BigDecimal> response = testRestTemplate.exchange(url, HttpMethod.GET, null, BigDecimal.class);
+
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+        assertThat(response.getBody()).isEqualTo(TestUtilsGenerator.getTotalPriceByDistrict());
     }
 
     @Test

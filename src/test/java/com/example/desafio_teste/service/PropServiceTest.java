@@ -75,7 +75,7 @@ class PropServiceTest {
         BDDMockito.when(districtRepo.getByName(ArgumentMatchers.anyString()))
                 .thenReturn(TestUtilsGenerator.getDistrict());
 
-        BigDecimal expected = new BigDecimal("61600.00");
+        BigDecimal expected = TestUtilsGenerator.getTotalPriceByDistrict();
 
         String propName = "Casa";
         BigDecimal result = propService.calculatePropPriceByDistrict(propName);
