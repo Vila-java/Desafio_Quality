@@ -1,5 +1,6 @@
 package com.example.desafio_teste.service;
 
+import com.example.desafio_teste.dto.RoomDetailsDto;
 import com.example.desafio_teste.model.District;
 import com.example.desafio_teste.model.Prop;
 import com.example.desafio_teste.model.Room;
@@ -11,6 +12,8 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Data
@@ -55,6 +58,15 @@ public class PropService implements PropServiceInterface {
                 .stream()
                 .max(Comparator.comparing(roomService::calculateArea)).get();
         return bigRoom;
+    }
+
+    public List<RoomDetailsDto> areaPerRoom(String propName) {
+        Prop prop = repoProp.getByName(propName);
+        RoomService roomService = new RoomService();
+        return prop.getRoomList().stream()
+                .map(r -> new RoomDetailsDto(r.getName(), roomService.calculateArea(r)))
+                .collect(Collectors.toList());
+
     }
 
 }

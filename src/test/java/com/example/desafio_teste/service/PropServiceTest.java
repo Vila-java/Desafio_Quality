@@ -1,5 +1,6 @@
 package com.example.desafio_teste.service;
 
+import com.example.desafio_teste.dto.RoomDetailsDto;
 import com.example.desafio_teste.exception.NotFoundException;
 import com.example.desafio_teste.model.Room;
 import com.example.desafio_teste.repository.DistrictRepo;
@@ -18,6 +19,8 @@ import org.mockito.junit.jupiter.MockitoSettings;
 import org.mockito.quality.Strictness;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -65,6 +68,24 @@ class PropServiceTest {
 
         Exception ex = assertThrows(NotFoundException.class, () -> propService.calculateTotalArea(propName));
         assertEquals(ex.getMessage(),"Propriedade não encontrada.");
+    }
+
+
+    @Test
+    @DisplayName("Verifica se o total de metros quadrados por comodo está correto")
+    void calculateTotalRoomArea_sumRoomsArea_whenRoomExist() {
+        BDDMockito.when(propRepo.getByName(ArgumentMatchers.anyString()))
+                .thenReturn(TestUtilsGenerator.getByNameWhenExist());
+
+        List<RoomDetailsDto> roomDetailsDtoListExpected = new ArrayList<>();
+        roomDetailsDtoListExpected.add(new RoomDetailsDto("Quarto", new BigDecimal("3.0")));
+        roomDetailsDtoListExpected.add(new RoomDetailsDto("Cozinha", new BigDecimal("8.0")));
+
+        String propName = "Quarto";
+        List result = propService.areaPerRoom(propName);
+
+        assertThat(result).isEqualTo(roomDetailsDtoListExpected);
+
     }
 
     @Test
