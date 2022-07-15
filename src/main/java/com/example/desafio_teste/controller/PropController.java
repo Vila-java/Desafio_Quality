@@ -29,6 +29,7 @@ public class PropController {
      * @param propName nome da propriedade
      * @return valor da área da propriedade
      */
+
     @PostMapping("/createProps")
     public ResponseEntity<Prop> createProps(@RequestBody @Valid Prop prop) {
         return ResponseEntity.ok(prop);
