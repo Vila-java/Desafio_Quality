@@ -1,5 +1,7 @@
 # Desafio Quality
 
+![image](https://user-images.githubusercontent.com/108008639/178047534-f8aabf31-d08c-422c-a55c-a4dec1232b4e.png)
+
 Este é um projeto proposto pela Digital House no Bootcamp IT Java 6 que enfatiza a prática dos conteúdos de testes unitários e de integração, além de Git, Java, Spring e API REST. Para o melhor desempenho da equipe, utilizamos de práticas ágeis do Scrum tais como: Daily e Sprint, bem como a utilização do método Kaban pelo Trello.
 
 ### Funcionalidades da Aplicação
