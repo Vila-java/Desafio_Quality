@@ -1,38 +1,40 @@
 # Desafio Quality
 
-![image](https://user-images.githubusercontent.com/108008639/178047534-f8aabf31-d08c-422c-a55c-a4dec1232b4e.png)
+Este é um projeto proposto pela Digital House no Bootcamp IT Java 6 que enfatiza a prática dos conteúdos de testes unitários e de integração, além de Git, Java, Spring e API REST. Para o melhor desempenho da equipe, utilizamos de práticas ágeis do Scrum tais como: Daily e Sprint, bem como a utilização do método Kaban pelo Trello.
 
+### Funcionalidades da Aplicação
 
-## Sobre
-A melhoria apresentada junto ao Projeto Integrador - FreshFood foi sob o aspecto do Carrier, ou seja, aquele responsável por realizar a entrega dos pedidos. Para tanto foi implementado o CRUD do Carrier. <b> Funcionalidades do Carrier </b>: 
+1. Calcular a área total de uma propriedade.
+2. Indicar o preço dessa mesma propriedade com base na área total.
+3. Determinar qual é o maior cômodo da propriedade.
+4. Determinar a área de cada cômodo.
 
-1. Salvar um Carrier;
-2. Retornar uma lista de Carriers ordenada por ordem alfabética;
-3. Retornar um Carrier realizando a busca por ID;
-4. Editar um Carrier existente por ID;
-5. Deletar um Carrier existente por ID.
+### Documentação
 
-Implementou-se ainda o equivalente ao pedido de entrega, PurchaseDelivery, o qual permite a criação do pedido de entrega avaliando se o veículo de propriedade do Carrier é compatível com o número de produtos a serem entregues. Funcionalidades do PurchaseDelivery: 
+[Requisições Técnicas de testes e validações](https://drive.google.com/drive/folders/15A9VwpNQ0B1xoOJJCja7peX6vH3ehdSU)
 
-1. Salvar um PurchaseDelivery. 
+[Diagrama de classes](https://app.diagrams.net/#G1ctjuq3gwWTsT2hp8kiocxGNbKj0yXEdo)
 
+[Trello](https://trello.com/b/FC5XCp53/testing-desafio)
+
+Javadoc
 
 ### Tecnologias desenvolvimento de código
 
 <img src="https://img.icons8.com/color/48/000000/git.png" title= "Git"/>  <img src="https://img.icons8.com/ios-glyphs/48/000000/github.png" title= "Git"/>  <img src="https://img.icons8.com/color/48/000000/java-coffee-cup-logo--v1.png" title= "Java"/>  <img src="https://img.icons8.com/color/48/000000/spring-logo.png" title= "Spring"/>  
 
+### Tecnologias comunicação
 
+<img src="https://img.icons8.com/color/48/000000/slack-new.png" title= "Slack"/> <img src="https://img.icons8.com/color/48/000000/trello.png" title= "Trello"/> <img src="https://img.icons8.com/color/48/000000/google-meet.png" title= "Google Meet"/>
 
 ### Ambiente de Desenvolvimento
 
 <img src="https://img.icons8.com/color/48/000000/intellij-idea.png" title="IntelliJ"/>
 
-
-### Integrante
-
+### Integrantes
+[Weslley Rocha](https://github.com/WeslleyRocha)<br> 
+[Evelin C. Rodrigues](https://github.com/everodrigues)<br>
 [Bianca Polegatti](https://github.com/biancapolegatti)<br> 
-
-### Acesso a coleção do Postman 
-[Postman](https://www.postman.com/winter-equinox-389662/workspace/bianca-polegatti-us06/folder/21747886-63738648-3556-4a99-b253-eb59e7693ac2)
-
-
+[Bianca Klein](https://github.com/bischmitt98)<br>
+[Matheus Roberto](https://github.com/matheusaalves)<br>
+[Samantha Pires](https://github.com/SamanthaPiresLuchmannLeal)<br>
